@@ -1,4 +1,50 @@
-# cashif11.github.io
+.pulse-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #00ff41;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff41;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+}
+
+#live-clock {
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    font-weight: bold;
+}
+<div class="pulse-container">
+    <div class="pulse-dot"></div>
+    <span>AYRA_CORE: <span class="status-on">STABLE</span></span>
+    <span style="margin-left: 15px;">|</span>
+    <span style="margin-left: 15px;">SYS_TIME: <span id="live-clock">00:00:00</span></span>
+</div>
+<p>Location: Sahiwal, PK | Node: Vivo_X300_Pro</p>
+<script>
+    function updateClock() {
+        const now = new Date();
+        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                        now.getMinutes().toString().padStart(2, '0') + ":" + 
+                        now.getSeconds().toString().padStart(2, '0');
+        document.getElementById('live-clock').innerText = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
 # 🌌 AYRA UNIVERSE: The Sovereign Stack
 **Architect:** MASTER 
 **Core Status:** v4.0.0-Stable [Active]
