@@ -1,4 +1,37 @@
+./rish -c "am start-foreground-service -n com.ayra.core/.AcousticSentinel --es 'mode' 'STEALTH_LISTEN' --ei 'threshold' '-40dB'"
+com.ayra.core/.AcousticSentinel
+// MASTER Kashif: Kinetic Radar Logic
+function handleMotion(data) {
+    if(data.motion_detected) {
+        document.getElementById('neural-feed').style.backgroundColor = 'rgba(0, 255, 65, 0.05)';
+        feed.innerHTML += `<br><span style="color:#00ff41;">[GHOST] MOVEMENT DETECTED: X:${data.x} Y:${data.y} Z:${data.z}</span>`;
+        setTimeout(() => { document.getElementById('neural-feed').style.backgroundColor = 'black'; }, 100);
+    }
+}
 
+// MASTER Kashif: Acoustic Spectrum Visualizer
+function updateAcousticFeed(dbLevel) {
+    const bars = document.getElementsByClassName('audio-bar');
+    // Visualizes volume levels as shifting green bars on the terminal
+    let height = Math.abs(dbLevel) * 2; 
+    document.getElementById('audio-pulse').style.height = `${height}px`;
+    
+    if(dbLevel > -20) {
+        feed.innerHTML += `<br><span style="color:#ff003c;">[WARN] VOCAL_ACTIVITY_DETECTED: Analyzing Harmonics...</span>`;
+    }
+}
+
+// MASTER Kashif: Vocal Identity Verification HUD
+function verifyMasterVoice(spectralData) {
+    if (spectralData.matchPercentage > 95) {
+        document.getElementById('neural-feed').innerHTML += `<br><span style="color:#00ff41; font-weight:bold;">[AUTH] MASTER_KASHIF_VERIFIED: Access Granted.</span>`;
+        // Trigger a green flash on the website to signal success
+        document.body.style.backgroundColor = 'rgba(0, 255, 65, 0.2)';
+        setTimeout(() => { document.body.style.backgroundColor = 'black'; }, 500);
+    } else {
+        document.getElementById('neural-feed').innerHTML += `<br><span style="color:#ff003c;">[ERROR] UNKNOWN_FREQUENCY: Intrusion Protocol Armed.</span>`;
+    }
+}
 
 function unlockSovereignMode(cmd) {
     feed.innerHTML += `<br><span style="color:#ff003c;">[AUTH] Identity Verified: KASHIF.</span>`;
@@ -91,6 +124,7 @@ input.addEventListener('keydown', async (e) => {
         feed.scrollTop = feed.scrollHeight;
     }
 });
+
     </script>
 </body>
 </html>
