@@ -1,3 +1,4 @@
+
 // PHANTOM_CORE_v4: Obfuscated Sovereign Logic
 const _0xAuth = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"; // Hashed Key
 const input = document.getElementById('command-input');
@@ -71,3 +72,26 @@ async function globalUniverseActivate(voiceInput) {
         node.send("ACTIVATE_UNIVERSE_MODE");
     });
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AYRA | Sovereign Terminal</title>
+    <style>
+        body { background: #0a0a0a; color: #00ff41; font-family: 'Courier New', monospace; padding: 20px; }
+        #neural-feed { height: 400px; overflow-y: auto; border: 1px solid #333; padding: 10px; margin-bottom: 10px; background: #000; }
+        #command-input { width: 100%; background: #000; border: 1px solid #00ff41; color: #00ff41; padding: 10px; outline: none; }
+        .master-id { color: #ff003c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div id="neural-feed">
+        [SYS] AYRA v4.0 Initialized...<br>
+        [SYS] Listening for MASTER Key...
+    </div>
+    <input type="text" id="command-input" placeholder="Awaiting Command..." autofocus>
+
+    <script>
+        // Paste your PHANTOM_CORE_v4 logic here
+    </script>
+</body>
+</html>
