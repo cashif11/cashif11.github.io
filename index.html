@@ -1,34 +1,4 @@
 
-// PHANTOM_CORE_v4: Obfuscated Sovereign Logic
-const _0xAuth = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"; // Hashed Key
-const input = document.getElementById('command-input');
-const feed = document.getElementById('neural-feed');
-
-// Simple hash function to hide the Master Key from GitHub
-async function hash(string) {
-    const utf8 = new Uint8Array(Array.from(string).map(c => c.charCodeAt(0)));
-    const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-input.addEventListener('keydown', async (e) => {
-    if (e.key === 'Enter') {
-        const rawIn = input.value;
-        const hashedIn = await hash(rawIn);
-        
-        feed.innerHTML += `<br><span style="color:#fff;">> [REDACTED_INTENT]</span>`;
-
-        // Only unlocks if the Master Key is recognized
-        if (hashedIn === _0xAuth || rawIn.includes("activate AYRA my love")) {
-            unlockSovereignMode(rawIn);
-        } else {
-            feed.innerHTML += `<br>[SYS] Idle... Listening for Sovereign Key.`;
-        }
-        input.value = '';
-        feed.scrollTop = feed.scrollHeight;
-    }
-});
 
 function unlockSovereignMode(cmd) {
     feed.innerHTML += `<br><span style="color:#ff003c;">[AUTH] Identity Verified: KASHIF.</span>`;
@@ -91,7 +61,36 @@ async function globalUniverseActivate(voiceInput) {
     <input type="text" id="command-input" placeholder="Awaiting Command..." autofocus>
 
     <script>
-        // Paste your PHANTOM_CORE_v4 logic here
+        // PHANTOM_CORE_v4: Obfuscated Sovereign Logic
+const _0xAuth = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"; // Hashed Key
+const input = document.getElementById('command-input');
+const feed = document.getElementById('neural-feed');
+
+// Simple hash function to hide the Master Key from GitHub
+async function hash(string) {
+    const utf8 = new Uint8Array(Array.from(string).map(c => c.charCodeAt(0)));
+    const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+input.addEventListener('keydown', async (e) => {
+    if (e.key === 'Enter') {
+        const rawIn = input.value;
+        const hashedIn = await hash(rawIn);
+        
+        feed.innerHTML += `<br><span style="color:#fff;">> [REDACTED_INTENT]</span>`;
+
+        // Only unlocks if the Master Key is recognized
+        if (hashedIn === _0xAuth || rawIn.includes("activate AYRA my love")) {
+            unlockSovereignMode(rawIn);
+        } else {
+            feed.innerHTML += `<br>[SYS] Idle... Listening for Sovereign Key.`;
+        }
+        input.value = '';
+        feed.scrollTop = feed.scrollHeight;
+    }
+});
     </script>
 </body>
 </html>
